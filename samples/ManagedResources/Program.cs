@@ -19,13 +19,31 @@ namespace ManagedResources
             // 3. Access the resource using the appropriate getter as shown bellow
 
 
-            Debug.WriteLine(Resources.GetString(Resources.StringResources.String1));
 
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
 
-            Debug.WriteLine(Resources.GetString(Resources.StringResources.String2));
 
-            Debug.WriteLine($"PNG image has {Resources.GetBytes(Resources.BinaryResources.nano_Framework_logo_32_border_trans).Length} bytes");
+            Debug.WriteLine($"File-10k has {Resources.GetBytes(Resources.BinaryResources.file_10k).Length} bytes");
+
+            Debug.WriteLine($"File-20k has {Resources.GetBytes(Resources.BinaryResources.file_20k).Length} bytes");
+
+            Debug.WriteLine($"File-30k has {Resources.GetBytes(Resources.BinaryResources.file_30k).Length} bytes");
+
+            Debug.WriteLine($"File-40k has {Resources.GetBytes(Resources.BinaryResources.file_40k).Length} bytes");
+
+            Debug.WriteLine($"File-50k has {Resources.GetBytes(Resources.BinaryResources.file_50k).Length} bytes");
+
+            Debug.WriteLine($"File-60k has {Resources.GetBytes(Resources.BinaryResources.file_60k).Length} bytes");
+
+            Debug.WriteLine($"File-70k has {Resources.GetBytes(Resources.BinaryResources.file_70k).Length} bytes");
+
+            Debug.WriteLine($"File-80k has {Resources.GetBytes(Resources.BinaryResources.file_80k).Length} bytes");
+
+            Debug.WriteLine($"File-90k has {Resources.GetBytes(Resources.BinaryResources.file_90k).Length} bytes");
+
+            Debug.WriteLine($"File-100k has {Resources.GetBytes(Resources.BinaryResources.file_100k).Length} bytes");
+
+            Debug.WriteLine($"File-200k has {Resources.GetBytes(Resources.BinaryResources.file_200k).Length} bytes");
 
             Thread.Sleep(Timeout.Infinite);
         }

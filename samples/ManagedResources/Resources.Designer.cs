@@ -36,7 +36,6 @@ namespace ManagedResources
         [System.SerializableAttribute()]
         internal enum BinaryResources : short
         {
-            file_200k = -25938,
             file_60k = -23833,
             file_30k = -21424,
             file_20k = -21301,
@@ -45,7 +44,7 @@ namespace ManagedResources
             file_10k = -5487,
             file_80k = 14698,
             file_40k = 16953,
-            file_100k = 18808,
+            pix = 21015,
             file_90k = 31360,
         }
         [System.SerializableAttribute()]

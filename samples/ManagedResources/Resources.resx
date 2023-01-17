@@ -118,14 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="file_100k" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\file-100k.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="file_10k" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\file-10k.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="file_200k" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\file-200k.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="file_20k" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\file-20k.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -150,6 +144,9 @@
   </data>
   <data name="file_90k" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\file-90k.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\pix.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>This is string 1</value>

@@ -41,9 +41,11 @@ namespace ManagedResources
 
             Debug.WriteLine($"File-90k has {Resources.GetBytes(Resources.BinaryResources.file_90k).Length} bytes");
 
-            Debug.WriteLine($"File-100k has {Resources.GetBytes(Resources.BinaryResources.file_100k).Length} bytes");
-
-            Debug.WriteLine($"File-200k has {Resources.GetBytes(Resources.BinaryResources.file_200k).Length} bytes");
+            var pix = Resources.GetBytes(Resources.BinaryResources.pix);
+            var lastValue = pix.GetValue(pix.Length - 1);
+            int number = int.Parse(lastValue.ToString());
+            string hex = number.ToString("x");
+            Debug.WriteLine($"pix.png has {(pix).Length} bytes and last byte hex value is {hex}");
 
             Thread.Sleep(Timeout.Infinite);
         }

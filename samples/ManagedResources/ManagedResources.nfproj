@@ -34,9 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\file-100k.bin" />
     <None Include="Resources\file-10k.bin" />
-    <Resource Include="Resources\file-200k.bin" />
+    <None Include="Resources\file-1400k.bin" />
     <None Include="Resources\file-20k.bin" />
     <None Include="Resources\file-30k.bin" />
     <None Include="Resources\file-40k.bin" />
@@ -44,7 +43,10 @@
     <None Include="Resources\file-60k.bin" />
     <None Include="Resources\file-70k.bin" />
     <None Include="Resources\file-80k.bin" />
-    <None Include="Resources\file-90k.bin" />
+    <Content Include="Resources\pix.png" />
+    <Content Include="Resources\file-90k.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib, Version=1.14.3.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
@@ -52,9 +54,9 @@
       <Private>True</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="nanoFramework.ResourceManager">
-      <HintPath>packages\nanoFramework.ResourceManager.1.2.13\lib\nanoFramework.ResourceManager.dll</HintPath>
-    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\nanoFramework.ResourceManager\nanoFramework.ResourceManager\nanoFramework.ResourceManager.nfproj" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>

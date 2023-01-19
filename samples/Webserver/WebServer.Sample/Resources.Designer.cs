@@ -33,6 +33,7 @@ namespace WebServer.Sample
         internal enum BinaryResources : short
         {
             favicon = -22914,
+            favicon2 = -19707,
         }
     }
 }

@@ -102,6 +102,12 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\favicon.gif" />
+    <Content Include="Resources\favicon.bmp" />
+    <Content Include="Resources\favicon.jpg" />
+    <Content Include="Resources\favicon.png" />
+  </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>
     <ProjectCapabilities>

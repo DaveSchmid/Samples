@@ -59,10 +59,10 @@ namespace nanoFramework.WebServer.Sample
 #else
                 success = NetworkHelper.SetupAndConnectNetwork(cs.Token, true);
 #endif
-                if(!success)
+                if (!success)
                 {
                     Debug.WriteLine($"Can't get a proper IP address and DateTime, error: {WifiNetworkHelper.Status}.");
-                    if(WifiNetworkHelper.HelperException !=null)
+                    if (WifiNetworkHelper.HelperException != null)
                     {
                         Debug.WriteLine($"Exception: {WifiNetworkHelper.HelperException}");
                     }
@@ -277,6 +277,18 @@ namespace nanoFramework.WebServer.Sample
                 {
                     WebServer.SendFileOverHTTP(e.Context.Response, "favicon.ico", Resources.GetBytes(Resources.BinaryResources.favicon));
                 }
+                else if (url.ToLower().IndexOf("/favicon.png") == 0)
+                {
+                    WebServer.SendFileOverHTTP(e.Context.Response, "favicon.png", Resources.GetBytes(Resources.BinaryResources.favicon));
+                }
+                else if (url.ToLower().IndexOf("/favicon2.ico") == 0)
+                {
+                    SendFileOverHTTP(e.Context.Response, "favicon2.ico", Resources.GetBytes(Resources.BinaryResources.favicon2));
+                }
+                else if (url.ToLower().IndexOf("/favicon2.png") == 0)
+                {
+                    SendFileOverHTTP(e.Context.Response, "favicon2.png", Resources.GetBytes(Resources.BinaryResources.favicon2));
+                }
 #if HAS_STORAGE
                 else
                 {
@@ -301,6 +313,77 @@ namespace nanoFramework.WebServer.Sample
                 WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.InternalServerError);
             }
         }
+
+
+        /// <summary>
+        /// Send file content over HTTP response.
+        /// </summary>
+        /// <param name="response"><see cref="HttpListenerResponse"/> to send the content over.</param>
+        /// <param name="fileName">Name of the file to send over <see cref="HttpListenerResponse"/>.</param>
+        /// <param name="content">Content of the file to send.</param>
+        /// /// <param name="contentType">The type of file, if empty string, then will use auto detection</param>
+        public static void SendFileOverHTTP(HttpListenerResponse response, string fileName, byte[] content, string contentType = "")
+        {
+            contentType = contentType == "" ? GetContentTypeFromFileName(fileName.Substring(fileName.LastIndexOf('.'))) : contentType;
+            response.ContentType = contentType;
+            response.ContentLength64 = content.Length;
+
+            // Writes data to output stream
+            response.OutputStream.Write(content, 0, content.Length);
+
+        }
+        /// <summary>
+        /// Get the MIME-type for a file name.
+        /// </summary>
+        /// <param name="fileName">File name to get content type for.</param>
+        /// <returns>The MIME-type for the file name.</returns>
+        private static string GetContentTypeFromFileName(string fileName)
+        {
+            // normalize to lower case to speed comparison
+            fileName = fileName.ToLower();
+
+            string contentType = "text/html";
+
+            //determine the type of file for the http header
+            if (fileName == ".cs" ||
+                fileName == ".txt" ||
+                fileName == ".csproj"
+            )
+            {
+                contentType = "text/plain";
+            }
+            else if (fileName == ".jpg" ||
+                fileName == ".bmp" ||
+                fileName == ".gif" ||
+                fileName == ".jpeg" ||
+                fileName == ".png"
+              )
+            {
+                contentType = $"image/{fileName.TrimStart('.')}";
+            }
+            else if (fileName == ".htm" ||
+                fileName == ".html"
+              )
+            {
+                contentType = "text/html";
+            }
+            else if (fileName == ".mp3")
+            {
+                contentType = "audio/mpeg";
+            }
+            else if (fileName == ".css")
+            {
+                contentType = "text/css";
+            }
+            else if (fileName == ".ico")
+            {
+                contentType = "image/x-icon";
+            }
+
+            return contentType;
+        }
+
+
 
         private static bool CheckAPiKey(WebHeaderCollection headers)
         {

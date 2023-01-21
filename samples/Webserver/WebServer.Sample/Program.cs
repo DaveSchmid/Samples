@@ -283,11 +283,19 @@ namespace nanoFramework.WebServer.Sample
                 }
                 else if (url.ToLower().IndexOf("/favicon2.ico") == 0)
                 {
-                    SendFileOverHTTP(e.Context.Response, "favicon2.ico", Resources.GetBytes(Resources.BinaryResources.favicon2));
+                    WebServer.SendFileOverHTTP(e.Context.Response, "favicon2.ico", Resources.GetBytes(Resources.BinaryResources.favicon2));
                 }
                 else if (url.ToLower().IndexOf("/favicon2.png") == 0)
                 {
-                    SendFileOverHTTP(e.Context.Response, "favicon2.png", Resources.GetBytes(Resources.BinaryResources.favicon2));
+                    WebServer.SendFileOverHTTP(e.Context.Response, "favicon2.png", Resources.GetBytes(Resources.BinaryResources.favicon2));
+                }
+                else if (url.ToLower().IndexOf("/favicon3.ico") == 0)
+                {
+                    SendFileOverHTTP(e.Context.Response, "favicon3.ico", Resources.GetBytes(Resources.BinaryResources.favicon2));
+                }
+                else if (url.ToLower().IndexOf("/favicon3.png") == 0)
+                {
+                    SendFileOverHTTP(e.Context.Response, "favicon3.png", Resources.GetBytes(Resources.BinaryResources.favicon2));
                 }
 #if HAS_STORAGE
                 else

@@ -332,60 +332,84 @@ namespace nanoFramework.WebServer.Sample
         /// /// <param name="contentType">The type of file, if empty string, then will use auto detection</param>
         public static void SendFileOverHTTP(HttpListenerResponse response, string fileName, byte[] content, string contentType = "")
         {
-            contentType = contentType == "" ? GetContentTypeFromFileName(fileName.Substring(fileName.LastIndexOf('.'))) : contentType;
+            contentType = contentType == "" ? GetContentTypeFromFileName(fileName) : contentType;
             response.ContentType = contentType;
             response.ContentLength64 = content.Length;
 
             // Writes data to output stream
             response.OutputStream.Write(content, 0, content.Length);
-
         }
         /// <summary>
         /// Get the MIME-type for a file name.
         /// </summary>
-        /// <param name="fileName">File name to get content type for.</param>
+        /// <param name="filename">Filename to get content type for.</param>
         /// <returns>The MIME-type for the file name.</returns>
-        private static string GetContentTypeFromFileName(string fileName)
+        private static string GetContentTypeFromFileName(string filename)
         {
+            var ext = filename;
+            if (filename.Contains("."))
+            {
+                ext = filename.Substring(filename.LastIndexOf('.'));
+            }
             // normalize to lower case to speed comparison
-            fileName = fileName.ToLower();
+            ext = ext.ToLower().TrimStart('.');
 
             string contentType = "text/html";
 
             //determine the type of file for the http header
-            if (fileName == ".cs" ||
-                fileName == ".txt" ||
-                fileName == ".csproj"
+            if (ext == "cs" ||
+                ext == "txt" ||
+                ext == "csproj"
             )
             {
                 contentType = "text/plain";
             }
-            else if (fileName == ".jpg" ||
-                fileName == ".bmp" ||
-                fileName == ".gif" ||
-                fileName == ".jpeg" ||
-                fileName == ".png"
-              )
+            else if (ext == "jpg" ||
+                ext == "jpeg"
+            )
             {
-                contentType = $"image/{fileName.TrimStart('.')}";
+                contentType = "image/jpeg";
             }
-            else if (fileName == ".htm" ||
-                fileName == ".html"
-              )
+            else if (ext == "bmp" ||
+                ext == "gif" ||
+                ext == "png"
+            )
+            {
+                contentType = $"image/{ext}";
+            }
+            else if (ext == "htm" ||
+                ext == "html"
+            )
             {
                 contentType = "text/html";
             }
-            else if (fileName == ".mp3")
+            else if (ext == "mp3")
             {
                 contentType = "audio/mpeg";
             }
-            else if (fileName == ".css")
+            else if (ext == "css")
             {
                 contentType = "text/css";
             }
-            else if (fileName == ".ico")
+            else if (ext == "ico")
             {
                 contentType = "image/x-icon";
+            }
+            else if (ext == "xlm")
+            {
+                contentType = "text/xml";
+            }
+            else if (ext == "svg")
+            {
+                contentType = "image/svg+xml";
+            }
+            else if (ext == "js")
+            {
+                contentType = "text/javascript";
+            }
+            else if (ext == "json")
+            {
+                contentType = "application/json";
             }
 
             return contentType;
